@@ -138,6 +138,7 @@ venv.bak/
 mlpenv/
 temp
 artifacts/
+catboost_info/
 
 # Spyder project settings
 .spyderproject
