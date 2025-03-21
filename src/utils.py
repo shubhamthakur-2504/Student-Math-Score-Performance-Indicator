@@ -5,6 +5,7 @@ import os
 from src.exception import customException
 from src.logger import logging
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+from sklearn.model_selection import GridSearchCV
 
 def save_report(file_path,report):
     try:
@@ -34,20 +35,24 @@ def save_pkl(file_path,file):
         raise customException(e,sys)
     
 
-def evaluate_model(x_train,y_train,x_test,y_test,models):
+def evaluate_model(x_train,y_train,x_test,y_test,models,params):
     report={}
+    trained_models = {}
     try:
         for i in range(len(list(models))):
 
             model = list(models.values())[i]
             name = list(models.keys())[i]
+            param = list(params.values())[i]
 
             try:
                 
-                model.fit(x_train,y_train)
+                # model.fit(x_train,y_train) #without hyperparameter tuning
+                grid = GridSearchCV(model,param,cv=3,n_jobs=-1)
+                grid.fit(x_train,y_train)
 
-                y_pred_train = model.predict(x_train)
-                y_pred_test = model.predict(x_test)
+                y_pred_train = grid.predict(x_train)
+                y_pred_test = grid.predict(x_test)
 
                 r2_train = r2_score(y_train,y_pred_train)
                 r2_test = r2_score(y_test,y_pred_test)
@@ -57,6 +62,8 @@ def evaluate_model(x_train,y_train,x_test,y_test,models):
 
                 mse_train = mean_squared_error(y_train,y_pred_train)
                 mse_test = mean_squared_error(y_test,y_pred_test)
+
+                best_params = grid.best_params_
 
                 result = {
                     "train":{
@@ -68,15 +75,17 @@ def evaluate_model(x_train,y_train,x_test,y_test,models):
                         "r2":r2_test,
                         "mae":mae_test,
                         "mse":mse_test
-                    }
+                    },
+                    "Best parameters:":best_params
                 }
                 report[name]= result
+                trained_models[name] = grid.best_estimator_
                 if not report:
                     logging.warning("no model trained")
                 logging.info(f"model {name} trained successfully")
             except Exception as e:
                 logging.error(f"something went wrong while training {name} model")
-        return report
+        return report, trained_models
     except Exception as e:
         logging.error("something went wrong while evaluating models")
         raise customException(e,sys)
@@ -95,3 +104,11 @@ def select_best_model(report):
     logging.info(f"The best model is {best_model} with an R2 score of {best_r2_score}")
     
     return best_model, best_r2_score
+
+def load_object(file_path):
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return dill.load(file_obj)
+    except Exception as e:
+        logging.error("something went wrong while loading pickle file")
+        raise customException(e,sys)

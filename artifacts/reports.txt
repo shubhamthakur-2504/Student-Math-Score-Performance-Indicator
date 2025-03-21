@@ -1,0 +1,202 @@
+{
+    "LinearRegression": {
+        "train": {
+            "r2": 0.8953420170109067,
+            "mae": 3.9936855154167596,
+            "mse": 25.46730612779318
+        },
+        "test": {
+            "r2": 0.8604348832034759,
+            "mae": 4.496527578512981,
+            "mse": 31.464604706349903
+        },
+        "Best parameters:": {}
+    },
+    "Ridge": {
+        "train": {
+            "r2": 0.8952664207571279,
+            "mae": 3.9880197023552046,
+            "mse": 25.485701599233703
+        },
+        "test": {
+            "r2": 0.8607128710471507,
+            "mae": 4.4890622847433335,
+            "mse": 31.40193304587224
+        },
+        "Best parameters:": {
+            "alpha": 1
+        }
+    },
+    "Lasso": {
+        "train": {
+            "r2": 0.8935665294472007,
+            "mae": 4.017852623881152,
+            "mse": 25.89935043076529
+        },
+        "test": {
+            "r2": 0.8634753265813577,
+            "mae": 4.456391611556756,
+            "mse": 30.779144390671128
+        },
+        "Best parameters:": {
+            "alpha": 0.1
+        }
+    },
+    "ElasticNet": {
+        "train": {
+            "r2": 0.8932528046649101,
+            "mae": 4.016240238054886,
+            "mse": 25.97569171732825
+        },
+        "test": {
+            "r2": 0.8631409066990612,
+            "mae": 4.452893265503157,
+            "mse": 30.854538512382405
+        },
+        "Best parameters:": {
+            "alpha": 0.1,
+            "l1_ratio": 0.9
+        }
+    },
+    "SVR": {
+        "train": {
+            "r2": 0.8937802430052353,
+            "mae": 3.9672937465992146,
+            "mse": 25.847345715494868
+        },
+        "test": {
+            "r2": 0.8611607214156747,
+            "mae": 4.480992615302044,
+            "mse": 31.30096630621234
+        },
+        "Best parameters:": {
+            "C": 100,
+            "epsilon": 0.5,
+            "kernel": "linear"
+        }
+    },
+    "KNeighborsRegressor": {
+        "train": {
+            "r2": 1.0,
+            "mae": 0.0,
+            "mse": 0.0
+        },
+        "test": {
+            "r2": 0.5715652016192848,
+            "mae": 7.778698731673257,
+            "mse": 96.58954818307193
+        },
+        "Best parameters:": {
+            "metric": "manhattan",
+            "n_neighbors": 7,
+            "weights": "distance"
+        }
+    },
+    "DecisionTreeRegressor": {
+        "train": {
+            "r2": 0.8968892808804311,
+            "mae": 3.8415556455240663,
+            "mse": 25.09079741340531
+        },
+        "test": {
+            "r2": 0.7255314022627988,
+            "mae": 6.283345136077373,
+            "mse": 61.87825532864303
+        },
+        "Best parameters:": {
+            "max_depth": 5,
+            "max_features": null,
+            "min_samples_leaf": 4,
+            "min_samples_split": 5
+        }
+    },
+    "RandomForestRegressor": {
+        "train": {
+            "r2": 0.969084536185,
+            "mae": 2.0209499999999996,
+            "mse": 7.522919499999998
+        },
+        "test": {
+            "r2": 0.7851218303741481,
+            "mae": 5.4946875,
+            "mse": 48.443743125
+        },
+        "Best parameters:": {
+            "max_depth": 30,
+            "max_features": "log2",
+            "min_samples_leaf": 1,
+            "min_samples_split": 2,
+            "n_estimators": 100
+        }
+    },
+    "AdaBoostRegressor": {
+        "train": {
+            "r2": 0.8992061902328424,
+            "mae": 4.141102347566531,
+            "mse": 24.527004398644486
+        },
+        "test": {
+            "r2": 0.7810595334768112,
+            "mae": 5.638147394341611,
+            "mse": 49.35957774763629
+        },
+        "Best parameters:": {
+            "learning_rate": 1,
+            "n_estimators": 200
+        }
+    },
+    "GradientBoostingRegressor": {
+        "train": {
+            "r2": 0.9610175014598383,
+            "mae": 2.4094298457589587,
+            "mse": 9.485938822765274
+        },
+        "test": {
+            "r2": 0.8160045363964666,
+            "mae": 5.071001397407199,
+            "mse": 41.48131469332138
+        },
+        "Best parameters:": {
+            "learning_rate": 0.2,
+            "max_depth": 3,
+            "min_samples_split": 5,
+            "n_estimators": 50
+        }
+    },
+    "CatBoostRegressor": {
+        "train": {
+            "r2": 0.9284484945647058,
+            "mae": 3.316451205364101,
+            "mse": 17.41122885021578
+        },
+        "test": {
+            "r2": 0.8335068221173306,
+            "mae": 4.859525901744205,
+            "mse": 37.53546837939278
+        },
+        "Best parameters:": {
+            "depth": 4,
+            "iterations": 1000,
+            "learning_rate": 0.01
+        }
+    },
+    "XGBRegressor": {
+        "train": {
+            "r2": 0.9267112225918226,
+            "mae": 3.323128409385681,
+            "mse": 17.83397383246204
+        },
+        "test": {
+            "r2": 0.8228289709066454,
+            "mae": 4.995083236694336,
+            "mse": 39.94276309005646
+        },
+        "Best parameters:": {
+            "colsample_bytree": 0.8,
+            "learning_rate": 0.1,
+            "max_depth": 3,
+            "n_estimators": 50,
+            "subsample": 0.8
+        }
+    }
+}
